@@ -37,19 +37,21 @@ CREATE TABLE Storebranch (
 
 -- Tableau connection queries
 -- Question 1 Calculate the number of orders per day of the week, distinguishing if the orders are on_demand.
-SELECT count(on_demand)
+SELECT dow, count(on_demand)
 FROM orders
 JOIN order_product
 ON orders.order_id = order_product.order_id
 WHERE on_demand = 'true' 
-group by dow;
+group by dow
+order by dow;
 
-SELECT count(on_demand)
+SELECT dow, count(on_demand)
 FROM orders
 JOIN order_product
 ON orders.order_id = order_product.order_id
-WHERE on_demand = 'false'
-group by dow;
+WHERE on_demand = 'false' 
+group by dow
+order by dow;
 
 --Question 2 Calculate the average quantity of distinct products that each order has, grouped by store
 select store, avg(quantity)
@@ -58,7 +60,8 @@ join orders
 on orders.order_id = order_product.order_id
 join storebranch
 on orders.store_branch_id = storebranch.store_branch_id
-group by store;
+group by store
+order by avg(quantity) asc;
 
 -- Question 3 Calculate the average found rate(*) of the orders grouped by the product format and day of the week.
 select dow, avg(shoppers.found_rate), buy_unit
