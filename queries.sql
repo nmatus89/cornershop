@@ -72,3 +72,6 @@ join order_product
 on orders.order_id = order_product.order_id
 group by dow, buy_unit
 order by buy_unit asc;
+
+-- Question 4 Calculate the average error and mean squared error of our estimation model for each hour of the day.
+
