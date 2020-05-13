@@ -1,4 +1,4 @@
-picker_id,seniority,found_rate,picking_speed,accepted_rate,rating
+shopper_id,seniority,found_rate,picking_speed,accepted_rate,rating
 087ab65ceca40dbef697f585dc159d5d,ADVANCED,0.861,1.64,1,4.48
 645973c41314d763b58dc2bceeeeffc9,INTERMEDIATE,0.8337,2.83,0.96,4.79
 82810715fdda44962e7e422015ea1f32,ADVANCED,0.8681,1.27,0.88,4.84
