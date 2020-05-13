@@ -1,0 +1,1835 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20193.19.0821.2225                               -->
+<workbook source-build='2019.3.0 (20193.19.0821.2225)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts ignorable='true' predowngraded='true' />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MapboxVectorStylesAndLayers />
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style-theme name='modern' />
+  <datasources>
+    <datasource caption='orders+ (2)' inline='true' name='federated.0xocvjx0fkif3z191exb70nyten6' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='orders' name='textscan.1m1vii70qv8kfy109jq8e1oiwlij'>
+            <connection class='textscan' directory='C:/Users/Nestor/Desktop/cornershop/data' filename='orders.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[orders.csv].[store_branch_id]' />
+              <expression op='[storebranch.csv].[store_branch_id]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[orders.csv].[order_id]' />
+                <expression op='[order_product.csv].[order_id]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.1m1vii70qv8kfy109jq8e1oiwlij' name='orders.csv' table='[orders#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+                <column datatype='string' name='order_id' ordinal='0' />
+                <column datatype='real' name='lat' ordinal='1' />
+                <column datatype='real' name='lng' ordinal='2' />
+                <column datatype='integer' name='dow' ordinal='3' />
+                <column datatype='datetime' name='promised_time' ordinal='4' />
+                <column datatype='datetime' name='actual_time' ordinal='5' />
+                <column datatype='boolean' name='on_demand' ordinal='6' />
+                <column datatype='string' name='picker_id' ordinal='7' />
+                <column datatype='string' name='driver_id' ordinal='8' />
+                <column datatype='string' name='store_branch_id' ordinal='9' />
+                <column datatype='real' name='total_minutes' ordinal='10' />
+              </columns>
+            </relation>
+            <relation connection='textscan.1m1vii70qv8kfy109jq8e1oiwlij' name='order_product.csv' table='[order_product#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+                <column datatype='string' name='order_id' ordinal='0' />
+                <column datatype='string' name='product_id' ordinal='1' />
+                <column datatype='real' name='quantity' ordinal='2' />
+                <column datatype='real' name='quantity_found' ordinal='3' />
+                <column datatype='string' name='buy_unit' ordinal='4' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.1m1vii70qv8kfy109jq8e1oiwlij' name='storebranch.csv' table='[storebranch#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+              <column datatype='string' name='store_branch_id' ordinal='0' />
+              <column datatype='string' name='store' ordinal='1' />
+              <column datatype='real' name='lat' ordinal='2' />
+              <column datatype='real' name='lng' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[actual_time]' value='[orders.csv].[actual_time]' />
+          <map key='[buy_unit]' value='[order_product.csv].[buy_unit]' />
+          <map key='[dow]' value='[orders.csv].[dow]' />
+          <map key='[driver_id]' value='[orders.csv].[driver_id]' />
+          <map key='[lat (storebranch.csv)]' value='[storebranch.csv].[lat]' />
+          <map key='[lat]' value='[orders.csv].[lat]' />
+          <map key='[lng (storebranch.csv)]' value='[storebranch.csv].[lng]' />
+          <map key='[lng]' value='[orders.csv].[lng]' />
+          <map key='[on_demand]' value='[orders.csv].[on_demand]' />
+          <map key='[order_id (order_product.csv)]' value='[order_product.csv].[order_id]' />
+          <map key='[order_id]' value='[orders.csv].[order_id]' />
+          <map key='[picker_id]' value='[orders.csv].[picker_id]' />
+          <map key='[product_id]' value='[order_product.csv].[product_id]' />
+          <map key='[promised_time]' value='[orders.csv].[promised_time]' />
+          <map key='[quantity]' value='[order_product.csv].[quantity]' />
+          <map key='[quantity_found]' value='[order_product.csv].[quantity_found]' />
+          <map key='[store]' value='[storebranch.csv].[store]' />
+          <map key='[store_branch_id (storebranch.csv)]' value='[storebranch.csv].[store_branch_id]' />
+          <map key='[store_branch_id]' value='[orders.csv].[store_branch_id]' />
+          <map key='[total_minutes]' value='[orders.csv].[total_minutes]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lat]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lat</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lng</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lng]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lng</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dow</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dow]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>dow</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>promised_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[promised_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>promised_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>actual_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[actual_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>actual_time</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>on_demand</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[on_demand]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>on_demand</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>picker_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[picker_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>picker_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>driver_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[driver_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>driver_id</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store_branch_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[store_branch_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>store_branch_id</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_minutes</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[total_minutes]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>total_minutes</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id (order_product.csv)]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity_found</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity_found]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity_found</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>buy_unit</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[buy_unit]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>buy_unit</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[storebranch.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store_branch_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[store_branch_id (storebranch.csv)]</local-name>
+            <parent-name>[storebranch.csv]</parent-name>
+            <remote-alias>store_branch_id</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[store]</local-name>
+            <parent-name>[storebranch.csv]</parent-name>
+            <remote-alias>store</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lat (storebranch.csv)]</local-name>
+            <parent-name>[storebranch.csv]</parent-name>
+            <remote-alias>lat</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lng</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lng (storebranch.csv)]</local-name>
+            <parent-name>[storebranch.csv]</parent-name>
+            <remote-alias>lng</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Hour' datatype='datetime' name='[actual_time]' role='dimension' type='ordinal' />
+      <column datatype='string' name='[buy_unit]' role='dimension' type='nominal' />
+      <column aggregation='Avg' datatype='real' name='[lat (storebranch.csv)]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[lng]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column aggregation='Hour' datatype='datetime' name='[promised_time]' role='dimension' type='ordinal' />
+      <column-instance column='[buy_unit]' derivation='None' name='[none:buy_unit:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.563636' measure-ordering='alphabetic' measure-percentage='0.436364' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:buy_unit:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;KG&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;UN&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+    <datasource caption='orders+' inline='true' name='federated.0g8qmpo0y8eqfw155gc531dk0o9l' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='orders' name='textscan.1dcd6yj0trng6y18iyrrv04p6i4z'>
+            <connection class='textscan' directory='C:/Users/Nestor/Desktop/cornershop/data' filename='orders.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[orders.csv].[order_id]' />
+              <expression op='[order_product.csv].[order_id]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[orders.csv].[picker_id]' />
+                <expression op='[shoppers.csv].[picker_id]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.1dcd6yj0trng6y18iyrrv04p6i4z' name='orders.csv' table='[orders#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+                <column datatype='string' name='order_id' ordinal='0' />
+                <column datatype='real' name='lat' ordinal='1' />
+                <column datatype='real' name='lng' ordinal='2' />
+                <column datatype='integer' name='dow' ordinal='3' />
+                <column datatype='datetime' name='promised_time' ordinal='4' />
+                <column datatype='datetime' name='actual_time' ordinal='5' />
+                <column datatype='boolean' name='on_demand' ordinal='6' />
+                <column datatype='string' name='picker_id' ordinal='7' />
+                <column datatype='string' name='driver_id' ordinal='8' />
+                <column datatype='string' name='store_branch_id' ordinal='9' />
+                <column datatype='real' name='total_minutes' ordinal='10' />
+              </columns>
+            </relation>
+            <relation connection='textscan.1dcd6yj0trng6y18iyrrv04p6i4z' name='shoppers.csv' table='[shoppers#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+                <column datatype='string' name='picker_id' ordinal='0' />
+                <column datatype='string' name='seniority' ordinal='1' />
+                <column datatype='real' name='found_rate' ordinal='2' />
+                <column datatype='real' name='picking_speed' ordinal='3' />
+                <column datatype='real' name='accepted_rate' ordinal='4' />
+                <column datatype='real' name='rating' ordinal='5' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.1dcd6yj0trng6y18iyrrv04p6i4z' name='order_product.csv' table='[order_product#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+              <column datatype='string' name='order_id' ordinal='0' />
+              <column datatype='string' name='product_id' ordinal='1' />
+              <column datatype='real' name='quantity' ordinal='2' />
+              <column datatype='real' name='quantity_found' ordinal='3' />
+              <column datatype='string' name='buy_unit' ordinal='4' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[accepted_rate]' value='[shoppers.csv].[accepted_rate]' />
+          <map key='[actual_time]' value='[orders.csv].[actual_time]' />
+          <map key='[buy_unit]' value='[order_product.csv].[buy_unit]' />
+          <map key='[dow]' value='[orders.csv].[dow]' />
+          <map key='[driver_id]' value='[orders.csv].[driver_id]' />
+          <map key='[found_rate]' value='[shoppers.csv].[found_rate]' />
+          <map key='[lat]' value='[orders.csv].[lat]' />
+          <map key='[lng]' value='[orders.csv].[lng]' />
+          <map key='[on_demand]' value='[orders.csv].[on_demand]' />
+          <map key='[order_id (order_product.csv)]' value='[order_product.csv].[order_id]' />
+          <map key='[order_id]' value='[orders.csv].[order_id]' />
+          <map key='[picker_id (shoppers.csv)]' value='[shoppers.csv].[picker_id]' />
+          <map key='[picker_id]' value='[orders.csv].[picker_id]' />
+          <map key='[picking_speed]' value='[shoppers.csv].[picking_speed]' />
+          <map key='[product_id]' value='[order_product.csv].[product_id]' />
+          <map key='[promised_time]' value='[orders.csv].[promised_time]' />
+          <map key='[quantity]' value='[order_product.csv].[quantity]' />
+          <map key='[quantity_found]' value='[order_product.csv].[quantity_found]' />
+          <map key='[rating]' value='[shoppers.csv].[rating]' />
+          <map key='[seniority]' value='[shoppers.csv].[seniority]' />
+          <map key='[store_branch_id]' value='[orders.csv].[store_branch_id]' />
+          <map key='[total_minutes]' value='[orders.csv].[total_minutes]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lat]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lat</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lng</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lng]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lng</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dow</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dow]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>dow</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>promised_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[promised_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>promised_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>actual_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[actual_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>actual_time</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>on_demand</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[on_demand]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>on_demand</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>picker_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[picker_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>picker_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>driver_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[driver_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>driver_id</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store_branch_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[store_branch_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>store_branch_id</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_minutes</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[total_minutes]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>total_minutes</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[shoppers.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>picker_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[picker_id (shoppers.csv)]</local-name>
+            <parent-name>[shoppers.csv]</parent-name>
+            <remote-alias>picker_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>seniority</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[seniority]</local-name>
+            <parent-name>[shoppers.csv]</parent-name>
+            <remote-alias>seniority</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>found_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[found_rate]</local-name>
+            <parent-name>[shoppers.csv]</parent-name>
+            <remote-alias>found_rate</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>picking_speed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[picking_speed]</local-name>
+            <parent-name>[shoppers.csv]</parent-name>
+            <remote-alias>picking_speed</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>accepted_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[accepted_rate]</local-name>
+            <parent-name>[shoppers.csv]</parent-name>
+            <remote-alias>accepted_rate</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rating</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[rating]</local-name>
+            <parent-name>[shoppers.csv]</parent-name>
+            <remote-alias>rating</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id (order_product.csv)]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity_found</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity_found]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity_found</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>buy_unit</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[buy_unit]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>buy_unit</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Hour' datatype='datetime' name='[actual_time]' role='dimension' type='ordinal' />
+      <column aggregation='Avg' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Hour' datatype='datetime' name='[promised_time]' role='dimension' type='ordinal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.763636' measure-ordering='alphabetic' measure-percentage='0.236364' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+    <datasource caption='orders' inline='true' name='federated.0en0pou1f7r04i10jptya0rducmq' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='orders' name='textscan.0r02s7j1vhue9s100neu31yfa51a'>
+            <connection class='textscan' directory='C:/Users/Nestor/Desktop/cornershop/data' filename='orders.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[orders.csv].[order_id]' />
+              <expression op='[order_product.csv].[order_id]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.0r02s7j1vhue9s100neu31yfa51a' name='orders.csv' table='[orders#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+              <column datatype='string' name='order_id' ordinal='0' />
+              <column datatype='real' name='lat' ordinal='1' />
+              <column datatype='real' name='lng' ordinal='2' />
+              <column datatype='integer' name='dow' ordinal='3' />
+              <column datatype='datetime' name='promised_time' ordinal='4' />
+              <column datatype='datetime' name='actual_time' ordinal='5' />
+              <column datatype='boolean' name='on_demand' ordinal='6' />
+              <column datatype='string' name='picker_id' ordinal='7' />
+              <column datatype='string' name='driver_id' ordinal='8' />
+              <column datatype='string' name='store_branch_id' ordinal='9' />
+              <column datatype='real' name='total_minutes' ordinal='10' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0r02s7j1vhue9s100neu31yfa51a' name='order_product.csv' table='[order_product#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+              <column datatype='string' name='order_id' ordinal='0' />
+              <column datatype='string' name='product_id' ordinal='1' />
+              <column datatype='real' name='quantity' ordinal='2' />
+              <column datatype='real' name='quantity_found' ordinal='3' />
+              <column datatype='string' name='buy_unit' ordinal='4' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[actual_time]' value='[orders.csv].[actual_time]' />
+          <map key='[buy_unit]' value='[order_product.csv].[buy_unit]' />
+          <map key='[dow]' value='[orders.csv].[dow]' />
+          <map key='[driver_id]' value='[orders.csv].[driver_id]' />
+          <map key='[lat]' value='[orders.csv].[lat]' />
+          <map key='[lng]' value='[orders.csv].[lng]' />
+          <map key='[on_demand]' value='[orders.csv].[on_demand]' />
+          <map key='[order_id (order_product.csv)]' value='[order_product.csv].[order_id]' />
+          <map key='[order_id]' value='[orders.csv].[order_id]' />
+          <map key='[picker_id]' value='[orders.csv].[picker_id]' />
+          <map key='[product_id]' value='[order_product.csv].[product_id]' />
+          <map key='[promised_time]' value='[orders.csv].[promised_time]' />
+          <map key='[quantity]' value='[order_product.csv].[quantity]' />
+          <map key='[quantity_found]' value='[order_product.csv].[quantity_found]' />
+          <map key='[store_branch_id]' value='[orders.csv].[store_branch_id]' />
+          <map key='[total_minutes]' value='[orders.csv].[total_minutes]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lat]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lat</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lng</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lng]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lng</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dow</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dow]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>dow</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>promised_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[promised_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>promised_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>actual_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[actual_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>actual_time</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>on_demand</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[on_demand]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>on_demand</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>picker_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[picker_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>picker_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>driver_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[driver_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>driver_id</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store_branch_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[store_branch_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>store_branch_id</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_minutes</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[total_minutes]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>total_minutes</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id (order_product.csv)]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity_found</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity_found]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity_found</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>buy_unit</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[buy_unit]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>buy_unit</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Hour' datatype='datetime' name='[actual_time]' role='dimension' type='ordinal' />
+      <column aggregation='Avg' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[lng]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column aggregation='Hour' datatype='datetime' name='[promised_time]' role='dimension' type='ordinal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.579545' measure-ordering='alphabetic' measure-percentage='0.420455' show-structure='true' user-set-layout='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet lock-quick-filters='true' name='Q1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='12'>How many orders are on demand ?</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='orders' name='federated.0en0pou1f7r04i10jptya0rducmq' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0en0pou1f7r04i10jptya0rducmq'>
+            <column-instance column='[order_id]' derivation='Count' name='[cnt:order_id:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[dow]' role='measure' type='quantitative' />
+            <column-instance column='[dow]' derivation='None' name='[none:dow:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[on_demand]' derivation='None' name='[none:on_demand:nk]' pivot='key' type='nominal' />
+            <column datatype='boolean' name='[on_demand]' role='dimension' type='nominal' />
+            <column datatype='string' name='[order_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0en0pou1f7r04i10jptya0rducmq].[none:dow:qk]' field-type='quantitative' max='6' min='0' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='color' data-class='subtotal' value='#f28e2b' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+            <format attr='border-width' scope='cols' value='0' />
+            <format attr='border-style' scope='cols' value='none' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.0en0pou1f7r04i10jptya0rducmq].[cnt:order_id:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+            <encoding attr='color' field='[federated.0en0pou1f7r04i10jptya0rducmq].[cnt:order_id:qk]' num-steps='7' palette='red_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+            <format attr='border-width' scope='cols' value='0' />
+            <format attr='border-style' scope='cols' value='none' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='div-level' scope='cols' value='1' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0en0pou1f7r04i10jptya0rducmq].[none:on_demand:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0en0pou1f7r04i10jptya0rducmq].[cnt:order_id:qk]</rows>
+        <cols>[federated.0en0pou1f7r04i10jptya0rducmq].[none:dow:qk]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0en0pou1f7r04i10jptya0rducmq].[none:dow:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0en0pou1f7r04i10jptya0rducmq].[cnt:order_id:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0en0pou1f7r04i10jptya0rducmq].[cnt:order_id:qk]</field>
+                  <field>[federated.0en0pou1f7r04i10jptya0rducmq].[none:dow:qk]</field>
+                  <field>[federated.0en0pou1f7r04i10jptya0rducmq].[none:on_demand:nk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>7333</value>
+                <value>2</value>
+                <value>true</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0en0pou1f7r04i10jptya0rducmq].[none:dow:qk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0en0pou1f7r04i10jptya0rducmq].[cnt:order_id:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0en0pou1f7r04i10jptya0rducmq].[cnt:order_id:qk]</field>
+                  <field>[federated.0en0pou1f7r04i10jptya0rducmq].[none:dow:qk]</field>
+                  <field>[federated.0en0pou1f7r04i10jptya0rducmq].[none:on_demand:nk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5907</value>
+                <value>1</value>
+                <value>true</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+      </table>
+      <simple-id uuid='{A375FAA5-6151-4D02-BBAE-1EA15EBD602E}' />
+    </worksheet>
+    <worksheet name='Q2 (2)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Arial' fontsize='12'>Avg quantity of distinct products that each order has by store</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='orders+ (2)' name='federated.0xocvjx0fkif3z191exb70nyten6' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0xocvjx0fkif3z191exb70nyten6'>
+            <column-instance column='[lat]' derivation='Avg' name='[avg:lat:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[lng]' derivation='Avg' name='[avg:lng:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[quantity]' derivation='Avg' name='[avg:quantity:qk]' pivot='key' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[lng]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[store]' derivation='None' name='[none:store:nk]' pivot='key' type='nominal' />
+            <column datatype='real' name='[quantity]' role='measure' type='quantitative' />
+            <column datatype='string' name='[store]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='b01002_001e' value='false' />
+            <format attr='enabled' id='b01002_002e' value='false' />
+            <format attr='enabled' id='b01002_003e' value='false' />
+            <format attr='enabled' id='dp02_0001e' value='false' />
+            <format attr='enabled' id='dp02_0015e' value='false' />
+            <format attr='enabled' id='dp03_0027e_plus_dp03_0029e' value='false' />
+            <format attr='enabled' id='dp03_0028e' value='false' />
+            <format attr='enabled' id='dp03_0030e_plus_dp03_0031e' value='false' />
+            <format attr='enabled' id='dp03_0062e' value='false' />
+            <format attr='enabled' id='dp03_0088e' value='false' />
+            <format attr='enabled' id='dp04_0001e' value='false' />
+            <format attr='enabled' id='dp04_0046e' value='false' />
+            <format attr='enabled' id='dp04_0047e' value='false' />
+            <format attr='enabled' id='dp04_0089e' value='false' />
+            <format attr='enabled' id='dp05_0001e' value='false' />
+            <format attr='enabled' id='dp05_0002e_div_dp05_0003e' value='false' />
+            <format attr='enabled' id='dp05_0032e' value='false' />
+            <format attr='enabled' id='dp05_0033e' value='false' />
+            <format attr='enabled' id='dp05_0034e' value='false' />
+            <format attr='enabled' id='dp05_0039e' value='false' />
+            <format attr='enabled' id='dp05_0047e' value='false' />
+            <format attr='enabled' id='dp05_0053e' value='false' />
+            <format attr='enabled' id='dp05_0066e' value='false' />
+            <format attr='enabled' id='dp05_0077e' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+            <format attr='map-snap-zoom' value='true' />
+          </style-rule>
+          <style-rule element='map-data-layer'>
+            <format attr='palette' value='area-red-light' />
+            <format attr='geo-area-type' value='Zip Code' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lat:qk]' />
+              <lod column='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lng:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</rows>
+        <cols>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lat:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lng:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>18.287722867281843</value>
+                <value>-100.32972847442485</value>
+                <value>0.99349655172413809</value>
+                <value>&quot;a3bed30221372366bcd9b9779f395d0b&quot;</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lat:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lng:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>18.264344857935921</value>
+                <value>-100.34967773945036</value>
+                <value>2.5592592592592589</value>
+                <value>&quot;9d65282d498c0338377867996e761399&quot;</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lat:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lng:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>18.278309060674303</value>
+                <value>-100.32473230238914</value>
+                <value>1.3314102564102563</value>
+                <value>&quot;821dc9d74061fe7654b9ec20e574022d&quot;</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='3' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lat:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lng:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]</field>
+                  <field>[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>18.283747642265642</value>
+                <value>-100.33539152617502</value>
+                <value>0.71214285714285708</value>
+                <value>&quot;0b0d1b4d525596dc61c3fde64a6bf099&quot;</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+      </table>
+      <simple-id uuid='{918C0EE3-C311-4CA5-8966-59D91DCDD240}' />
+    </worksheet>
+    <worksheet name='Q2 map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='orders+ (2)' name='federated.0xocvjx0fkif3z191exb70nyten6' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0xocvjx0fkif3z191exb70nyten6'>
+            <column-instance column='[lat]' derivation='Avg' name='[avg:lat:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[lng]' derivation='Avg' name='[avg:lng:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[quantity]' derivation='Avg' name='[avg:quantity:qk]' pivot='key' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[lng]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[store]' derivation='None' name='[none:store:nk]' pivot='key' type='nominal' />
+            <column datatype='real' name='[quantity]' role='measure' type='quantitative' />
+            <column datatype='string' name='[store]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lng:qk]' field-type='quantitative' max='-11000734.329989795' min='-11273668.598405572' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lat:qk]' field-type='quantitative' max='2127216.5006879251' min='1964330.9481214855' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='b01002_001e' value='false' />
+            <format attr='enabled' id='b01002_002e' value='false' />
+            <format attr='enabled' id='b01002_003e' value='false' />
+            <format attr='enabled' id='dp02_0001e' value='false' />
+            <format attr='enabled' id='dp02_0015e' value='false' />
+            <format attr='enabled' id='dp03_0027e_plus_dp03_0029e' value='false' />
+            <format attr='enabled' id='dp03_0028e' value='false' />
+            <format attr='enabled' id='dp03_0030e_plus_dp03_0031e' value='false' />
+            <format attr='enabled' id='dp03_0062e' value='false' />
+            <format attr='enabled' id='dp03_0088e' value='false' />
+            <format attr='enabled' id='dp04_0001e' value='false' />
+            <format attr='enabled' id='dp04_0046e' value='false' />
+            <format attr='enabled' id='dp04_0047e' value='false' />
+            <format attr='enabled' id='dp04_0089e' value='false' />
+            <format attr='enabled' id='dp05_0001e' value='false' />
+            <format attr='enabled' id='dp05_0002e_div_dp05_0003e' value='false' />
+            <format attr='enabled' id='dp05_0032e' value='false' />
+            <format attr='enabled' id='dp05_0033e' value='false' />
+            <format attr='enabled' id='dp05_0034e' value='false' />
+            <format attr='enabled' id='dp05_0039e' value='false' />
+            <format attr='enabled' id='dp05_0047e' value='false' />
+            <format attr='enabled' id='dp05_0053e' value='false' />
+            <format attr='enabled' id='dp05_0066e' value='false' />
+            <format attr='enabled' id='dp05_0077e' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+          <style-rule element='map-data-layer'>
+            <format attr='palette' value='area-red-light' />
+            <format attr='geo-area-type' value='Zip Code' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]' />
+              <size column='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]' />
+              <text column='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lat:qk]</rows>
+        <cols>[federated.0xocvjx0fkif3z191exb70nyten6].[avg:lng:qk]</cols>
+      </table>
+      <simple-id uuid='{28F37016-5B3A-494D-83A0-16550C6825CC}' />
+    </worksheet>
+    <worksheet name='Q3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='orders+ (2)' name='federated.0xocvjx0fkif3z191exb70nyten6' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0xocvjx0fkif3z191exb70nyten6'>
+            <column datatype='string' name='[buy_unit]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[dow]' role='measure' type='quantitative' />
+            <column-instance column='[buy_unit]' derivation='None' name='[none:buy_unit:nk]' pivot='key' type='nominal' />
+            <column-instance column='[dow]' derivation='None' name='[none:dow:ok]' pivot='key' type='ordinal' />
+            <column datatype='real' name='[quantity_found]' role='measure' type='quantitative' />
+            <column-instance column='[quantity_found]' derivation='Sum' name='[sum:quantity_found:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0xocvjx0fkif3z191exb70nyten6].[sum:quantity_found:qk]</rows>
+        <cols>([federated.0xocvjx0fkif3z191exb70nyten6].[none:dow:ok] / [federated.0xocvjx0fkif3z191exb70nyten6].[none:buy_unit:nk])</cols>
+      </table>
+      <simple-id uuid='{1373F443-A516-460B-88F6-E92C64C30EE4}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Cornershop case</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style>
+        <style-rule element='dash-subtitle'>
+          <format attr='background-color' value='#ffffff' />
+        </style-rule>
+      </style>
+      <size maxheight='568' maxwidth='1150' minheight='568' minwidth='1150' preset-index='0' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97184' id='7' param='vert' type='layout-flow' w='98608' x='696' y='1408'>
+            <zone h='6162' id='8' type='title' w='98608' x='696' y='1408'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='45599' id='3' name='Q1' w='38348' x='435' y='8275' />
+        <zone h='41197' id='15' name='Q2 (2)' w='38522' x='435' y='52993' />
+        <zone h='10387' id='20' name='Q1' pane-specification-id='0' param='[federated.0en0pou1f7r04i10jptya0rducmq].[none:on_demand:nk]' type='color' w='8522' x='29217' y='10739' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run>Cornershop case</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='21' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97184' id='22' param='vert' type='layout-flow' w='98608' x='696' y='1408'>
+                <zone h='7394' id='8' type='title' w='98608' x='696' y='1408'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='259' h='45599' id='3' is-fixed='true' name='Q1' w='38348' x='435' y='8275'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='10387' id='20' name='Q1' pane-specification-id='0' param='[federated.0en0pou1f7r04i10jptya0rducmq].[none:on_demand:nk]' type='color' w='8522' x='29217' y='10739'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='234' h='41197' id='15' is-fixed='true' name='Q2 (2)' w='38522' x='435' y='52993'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{497089C0-C374-429D-AA33-0D8C22BA29F6}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='72'>
+    <window class='worksheet' name='Q1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0en0pou1f7r04i10jptya0rducmq].[none:on_demand:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <floating-toolbar-visibility value='2' />
+      </viewpoint>
+      <simple-id uuid='{720F4368-4C03-4844-8FEE-884EE0EEA6E3}' />
+    </window>
+    <window class='worksheet' name='Q2 map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0xocvjx0fkif3z191exb70nyten6].[none:store:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.0xocvjx0fkif3z191exb70nyten6].[avg:quantity:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <floating-toolbar-visibility value='2' />
+        <geo-search-visibility value='1' />
+        <default-map-tool-selection tool='1' />
+      </viewpoint>
+      <simple-id uuid='{BA8AAD5B-2D35-443E-A4B4-5AA8B7BCB825}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Q2 (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{0CDCF43E-ADF1-447D-90AE-BC7D8CBBB2AC}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Q1' />
+        <viewpoint name='Q2 (2)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='7' />
+      <simple-id uuid='{FC82FE90-EADD-477F-BCCA-AE3D4513B1EC}' />
+    </window>
+    <window class='worksheet' name='Q3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{35B337C3-F452-4E83-96A0-F19B1A42BE6B}' />
+    </window>
+  </windows>
+</workbook>
