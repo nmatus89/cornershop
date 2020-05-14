@@ -1,5 +1,5 @@
 -- Notes
--- Creation of tables in Postgresql
+-- Queries run in Postgresql
 
 CREATE TABLE Orders (
     order_id varchar,
