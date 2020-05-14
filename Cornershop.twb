@@ -17,6 +17,326 @@
   </preferences>
   <style-theme name='modern' />
   <datasources>
+    <datasource caption='orders' inline='true' name='federated.1mj08go1sxq0ks11dryr806jlcr9' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='orders' name='textscan.1fvljin0bjfw7v1h2t00l0r1cpq7'>
+            <connection class='textscan' directory='C:/Users/Nestor/Desktop/cornershop/data' filename='orders.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[orders.csv].[order_id]' />
+              <expression op='[order_product.csv].[order_id]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.1fvljin0bjfw7v1h2t00l0r1cpq7' name='orders.csv' table='[orders#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+              <column datatype='string' name='order_id' ordinal='0' />
+              <column datatype='real' name='lat' ordinal='1' />
+              <column datatype='real' name='lng' ordinal='2' />
+              <column datatype='integer' name='dow' ordinal='3' />
+              <column datatype='datetime' name='promised_time' ordinal='4' />
+              <column datatype='datetime' name='actual_time' ordinal='5' />
+              <column datatype='boolean' name='on_demand' ordinal='6' />
+              <column datatype='string' name='picker_id' ordinal='7' />
+              <column datatype='string' name='driver_id' ordinal='8' />
+              <column datatype='string' name='store_branch_id' ordinal='9' />
+              <column datatype='real' name='total_minutes' ordinal='10' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1fvljin0bjfw7v1h2t00l0r1cpq7' name='order_product.csv' table='[order_product#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
+              <column datatype='string' name='order_id' ordinal='0' />
+              <column datatype='string' name='product_id' ordinal='1' />
+              <column datatype='real' name='quantity' ordinal='2' />
+              <column datatype='real' name='quantity_found' ordinal='3' />
+              <column datatype='string' name='buy_unit' ordinal='4' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[actual_time]' value='[orders.csv].[actual_time]' />
+          <map key='[buy_unit]' value='[order_product.csv].[buy_unit]' />
+          <map key='[dow]' value='[orders.csv].[dow]' />
+          <map key='[driver_id]' value='[orders.csv].[driver_id]' />
+          <map key='[lat]' value='[orders.csv].[lat]' />
+          <map key='[lng]' value='[orders.csv].[lng]' />
+          <map key='[on_demand]' value='[orders.csv].[on_demand]' />
+          <map key='[order_id (order_product.csv)]' value='[order_product.csv].[order_id]' />
+          <map key='[order_id]' value='[orders.csv].[order_id]' />
+          <map key='[picker_id]' value='[orders.csv].[picker_id]' />
+          <map key='[product_id]' value='[order_product.csv].[product_id]' />
+          <map key='[promised_time]' value='[orders.csv].[promised_time]' />
+          <map key='[quantity]' value='[order_product.csv].[quantity]' />
+          <map key='[quantity_found]' value='[order_product.csv].[quantity_found]' />
+          <map key='[store_branch_id]' value='[orders.csv].[store_branch_id]' />
+          <map key='[total_minutes]' value='[orders.csv].[total_minutes]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lat]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lat</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lng</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lng]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>lng</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dow</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dow]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>dow</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>promised_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[promised_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>promised_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>actual_time</remote-name>
+            <remote-type>134</remote-type>
+            <local-name>[actual_time]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>actual_time</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Hour</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>on_demand</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[on_demand]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>on_demand</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>picker_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[picker_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>picker_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>driver_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[driver_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>driver_id</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>store_branch_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[store_branch_id]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>store_branch_id</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_minutes</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[total_minutes]</local-name>
+            <parent-name>[orders.csv]</parent-name>
+            <remote-alias>total_minutes</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id (order_product.csv)]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quantity_found</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quantity_found]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>quantity_found</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>buy_unit</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[buy_unit]</local-name>
+            <parent-name>[order_product.csv]</parent-name>
+            <remote-alias>buy_unit</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Hour' datatype='datetime' name='[actual_time]' role='dimension' type='ordinal' />
+      <column aggregation='Avg' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[lng]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column datatype='boolean' name='[on_demand]' role='dimension' type='nominal' />
+      <column aggregation='Hour' datatype='datetime' name='[promised_time]' role='dimension' type='ordinal' />
+      <column-instance column='[on_demand]' derivation='None' name='[none:on_demand:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.572864' measure-ordering='alphabetic' measure-percentage='0.427136' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:on_demand:nk]' type='palette'>
+            <map to='#1f77b4'>
+              <bucket>false</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>true</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
     <datasource caption='orders+' inline='true' name='federated.04hjrl60mcosw613kw8gq1q2z6bk' version='18.1'>
       <connection class='federated'>
         <named-connections>
@@ -413,321 +733,60 @@
       </semantic-values>
       <date-options start-of-week='monday' />
     </datasource>
-    <datasource caption='orders' inline='true' name='federated.1mj08go1sxq0ks11dryr806jlcr9' version='18.1'>
+    <datasource caption='Custom SQL Query (Cornershop) Q5' inline='true' name='federated.00jbpek1txqjis15ee1pl175wdwg' version='18.1'>
       <connection class='federated'>
         <named-connections>
-          <named-connection caption='orders' name='textscan.1fvljin0bjfw7v1h2t00l0r1cpq7'>
-            <connection class='textscan' directory='C:/Users/Nestor/Desktop/cornershop/data' filename='orders.csv' password='' server='' />
+          <named-connection caption='localhost' name='postgres.1le3urs1czes8e1d87ot41czln62'>
+            <connection authentication='username-password' class='postgres' dbname='Cornershop' odbc-native-protocol='' one-time-sql='' port='5432' server='localhost' username='postgres' />
           </named-connection>
         </named-connections>
-        <relation join='inner' type='join'>
-          <clause type='join'>
-            <expression op='='>
-              <expression op='[orders.csv].[order_id]' />
-              <expression op='[order_product.csv].[order_id]' />
-            </expression>
-          </clause>
-          <relation connection='textscan.1fvljin0bjfw7v1h2t00l0r1cpq7' name='orders.csv' table='[orders#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
-              <column datatype='string' name='order_id' ordinal='0' />
-              <column datatype='real' name='lat' ordinal='1' />
-              <column datatype='real' name='lng' ordinal='2' />
-              <column datatype='integer' name='dow' ordinal='3' />
-              <column datatype='datetime' name='promised_time' ordinal='4' />
-              <column datatype='datetime' name='actual_time' ordinal='5' />
-              <column datatype='boolean' name='on_demand' ordinal='6' />
-              <column datatype='string' name='picker_id' ordinal='7' />
-              <column datatype='string' name='driver_id' ordinal='8' />
-              <column datatype='string' name='store_branch_id' ordinal='9' />
-              <column datatype='real' name='total_minutes' ordinal='10' />
-            </columns>
-          </relation>
-          <relation connection='textscan.1fvljin0bjfw7v1h2t00l0r1cpq7' name='order_product.csv' table='[order_product#csv]' type='table'>
-            <columns character-set='UTF-8' header='yes' locale='es_MX' separator=','>
-              <column datatype='string' name='order_id' ordinal='0' />
-              <column datatype='string' name='product_id' ordinal='1' />
-              <column datatype='real' name='quantity' ordinal='2' />
-              <column datatype='real' name='quantity_found' ordinal='3' />
-              <column datatype='string' name='buy_unit' ordinal='4' />
-            </columns>
-          </relation>
-        </relation>
-        <cols>
-          <map key='[actual_time]' value='[orders.csv].[actual_time]' />
-          <map key='[buy_unit]' value='[order_product.csv].[buy_unit]' />
-          <map key='[dow]' value='[orders.csv].[dow]' />
-          <map key='[driver_id]' value='[orders.csv].[driver_id]' />
-          <map key='[lat]' value='[orders.csv].[lat]' />
-          <map key='[lng]' value='[orders.csv].[lng]' />
-          <map key='[on_demand]' value='[orders.csv].[on_demand]' />
-          <map key='[order_id (order_product.csv)]' value='[order_product.csv].[order_id]' />
-          <map key='[order_id]' value='[orders.csv].[order_id]' />
-          <map key='[picker_id]' value='[orders.csv].[picker_id]' />
-          <map key='[product_id]' value='[order_product.csv].[product_id]' />
-          <map key='[promised_time]' value='[orders.csv].[promised_time]' />
-          <map key='[quantity]' value='[order_product.csv].[quantity]' />
-          <map key='[quantity_found]' value='[order_product.csv].[quantity_found]' />
-          <map key='[store_branch_id]' value='[orders.csv].[store_branch_id]' />
-          <map key='[total_minutes]' value='[orders.csv].[total_minutes]' />
-        </cols>
+        <relation connection='postgres.1le3urs1czes8e1d87ot41czln62' name='Custom SQL Query' type='text'>select count(order_id)&#13;&#10;from orders&#13;&#10;where driver_id &lt;&lt;&gt;&gt; picker_id</relation>
         <metadata-records>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
-              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
-              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
           <metadata-record class='column'>
-            <remote-name>order_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[order_id]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>order_id</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LES_RES' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>lat</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[lat]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>lat</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>lng</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[lng]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>lng</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>dow</remote-name>
+            <remote-name>count</remote-name>
             <remote-type>20</remote-type>
-            <local-name>[dow]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>dow</remote-alias>
-            <ordinal>3</ordinal>
+            <local-name>[count]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>count</remote-alias>
+            <ordinal>1</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>promised_time</remote-name>
-            <remote-type>134</remote-type>
-            <local-name>[promised_time]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>promised_time</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>datetime</local-type>
-            <aggregation>Hour</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>actual_time</remote-name>
-            <remote-type>134</remote-type>
-            <local-name>[actual_time]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>actual_time</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>datetime</local-type>
-            <aggregation>Hour</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>on_demand</remote-name>
-            <remote-type>11</remote-type>
-            <local-name>[on_demand]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>on_demand</remote-alias>
-            <ordinal>6</ordinal>
-            <local-type>boolean</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>picker_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[picker_id]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>picker_id</remote-alias>
-            <ordinal>7</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LES_RES' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>driver_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[driver_id]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>driver_id</remote-alias>
-            <ordinal>8</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LES_RES' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>store_branch_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[store_branch_id]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>store_branch_id</remote-alias>
-            <ordinal>9</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LES_RES' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>total_minutes</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[total_minutes]</local-name>
-            <parent-name>[orders.csv]</parent-name>
-            <remote-alias>total_minutes</remote-alias>
-            <ordinal>10</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[order_product.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
+            <precision>20</precision>
             <contains-null>true</contains-null>
             <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
-              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
-              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;es_MX&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
             </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>order_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[order_id (order_product.csv)]</local-name>
-            <parent-name>[order_product.csv]</parent-name>
-            <remote-alias>order_id</remote-alias>
-            <ordinal>11</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LES_RES' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>product_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[product_id]</local-name>
-            <parent-name>[order_product.csv]</parent-name>
-            <remote-alias>product_id</remote-alias>
-            <ordinal>12</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LES_RES' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>quantity</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[quantity]</local-name>
-            <parent-name>[order_product.csv]</parent-name>
-            <remote-alias>quantity</remote-alias>
-            <ordinal>13</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>quantity_found</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[quantity_found]</local-name>
-            <parent-name>[order_product.csv]</parent-name>
-            <remote-alias>quantity_found</remote-alias>
-            <ordinal>14</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>buy_unit</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[buy_unit]</local-name>
-            <parent-name>[order_product.csv]</parent-name>
-            <remote-alias>buy_unit</remote-alias>
-            <ordinal>15</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LES_RES' />
           </metadata-record>
         </metadata-records>
       </connection>
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
-      <column aggregation='Hour' datatype='datetime' name='[actual_time]' role='dimension' type='ordinal' />
-      <column aggregation='Avg' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
-      <column aggregation='Avg' datatype='real' name='[lng]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-      <column datatype='boolean' name='[on_demand]' role='dimension' type='nominal' />
-      <column aggregation='Hour' datatype='datetime' name='[promised_time]' role='dimension' type='ordinal' />
-      <column-instance column='[on_demand]' derivation='None' name='[none:on_demand:nk]' pivot='key' type='nominal' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.572864' measure-ordering='alphabetic' measure-percentage='0.427136' show-structure='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[none:on_demand:nk]' type='palette'>
-            <map to='#1f77b4'>
-              <bucket>false</bucket>
-            </map>
-            <map to='#d62728'>
-              <bucket>true</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/Nestor/Desktop/cornershop/Custom SQL Query (Cornershop) Q5.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='05/14/2020 04:13:04 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Custom SQL Query (Cornershop) Q5' increment-value='%null%' refresh-type='create' rows-inserted='1' timestamp-start='2020-05-14 04:13:04.790' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>count</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[count]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>count</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.449749' measure-ordering='alphabetic' measure-percentage='0.550251' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
       </semantic-values>
@@ -797,6 +856,56 @@
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/Nestor/Desktop/cornershop/Custom SQL Query (Cornershop) Q3.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='05/14/2020 04:10:14 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Custom SQL Query (Cornershop) Q3' increment-value='%null%' refresh-type='create' rows-inserted='14' timestamp-start='2020-05-14 04:10:14.652' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>dow</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[dow]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dow</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>avg</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[avg]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>avg</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>14</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>buy_unit</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[buy_unit]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>buy_unit</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
       <layout dim-ordering='alphabetic' dim-percentage='0.447236' measure-ordering='alphabetic' measure-percentage='0.552764' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
@@ -867,43 +976,57 @@
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/Nestor/Desktop/cornershop/Custom SQL Query (Cornershop) Q4.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='05/14/2020 04:11:17 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Custom SQL Query (Cornershop) Q4' increment-value='%null%' refresh-type='create' rows-inserted='809' timestamp-start='2020-05-14 04:11:17.027' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>promised_time</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[promised_time]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>promised_time</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>809</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>stddev</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[stddev]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>stddev</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>663</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>variance</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[variance]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>variance</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>663</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
       <layout dim-ordering='alphabetic' dim-percentage='0.447236' measure-ordering='alphabetic' measure-percentage='0.552764' show-structure='true' />
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
-      </semantic-values>
-      <date-options start-of-week='monday' />
-    </datasource>
-    <datasource caption='Custom SQL Query (Cornershop) Q5' inline='true' name='federated.00jbpek1txqjis15ee1pl175wdwg' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='localhost' name='postgres.1le3urs1czes8e1d87ot41czln62'>
-            <connection authentication='username-password' class='postgres' dbname='Cornershop' odbc-native-protocol='' one-time-sql='' port='5432' server='localhost' username='postgres' />
-          </named-connection>
-        </named-connections>
-        <relation connection='postgres.1le3urs1czes8e1d87ot41czln62' name='Custom SQL Query' type='text'>select count(order_id)&#13;&#10;from orders&#13;&#10;where driver_id &lt;&lt;&gt;&gt; picker_id</relation>
-        <metadata-records>
-          <metadata-record class='column'>
-            <remote-name>count</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[count]</local-name>
-            <parent-name>[Custom SQL Query]</parent-name>
-            <remote-alias>count</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <precision>20</precision>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
-              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
-            </attributes>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
-        <calculation class='tableau' formula='1' />
-      </column>
-      <layout dim-ordering='alphabetic' dim-percentage='0.449749' measure-ordering='alphabetic' measure-percentage='0.550251' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;Mexico&quot;' />
       </semantic-values>
@@ -1984,8 +2107,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1750' minheight='1750' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='25' type='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='26' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='100000' id='27' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='28' param='vert' type='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='98000' id='3' is-fixed='true' is-scaled='1' param='C:/Users/Nestor/Desktop/descarga.png' type='bitmap' w='98400' x='800' y='1000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2285,7 +2408,7 @@
         <viewpoint name='Q4' />
         <viewpoint name='Q5' />
       </viewpoints>
-      <active id='3' />
+      <active id='-1' />
       <simple-id uuid='{E74B7549-2B48-40A7-B0C2-7B1AFEFE7A84}' />
     </window>
   </windows>
