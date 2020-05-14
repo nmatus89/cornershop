@@ -74,4 +74,14 @@ group by dow, buy_unit
 order by buy_unit asc;
 
 -- Question 4 Calculate the average error and mean squared error of our estimation model for each hour of the day.
+-- Excel pivot table
+-- Possible query
+-- SELECT promised_time, stddev(total_minutes), variance(total_minutes)    
+-- FROM orders
+-- group by promised_time
+-- order by promised_time asc;
 
+--Question 5 Calculate the number of orders in which the picker_id and driver_id are different
+select count(order_id)
+from orders
+where driver_id <> picker_id;
